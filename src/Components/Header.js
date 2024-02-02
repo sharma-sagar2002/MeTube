@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { toggleSideBar } from '../utils/appSlice';
 import { Link } from 'react-router-dom';
 import { API_KEY } from '../utils/constants';
+import { addSearchResults } from '../utils/searchSlice';
 
 const Header = () => {
     const dispatch =useDispatch();
@@ -31,9 +32,12 @@ const Header = () => {
    }
 
    const handleSearch = async ()=>{
-       const data=await fetch (" https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q="+textValue+"&key="+API_KEY);
+       const data=await fetch (" https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=50&q="+textValue+"&key="+API_KEY);
        const json=await data.json();
        console.log(json);
+       const searchResults=json.items;
+      dispatch(addSearchResults(searchResults));
+
    }
   return (
     <div className="grid grid-flow-col p-2 m-2 ">

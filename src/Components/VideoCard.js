@@ -10,7 +10,7 @@ return  (
           
           <h1 className=" w-60 font-medium" >{snippet.title}</h1>
           <h2 className=" w-60">{channelTitle}</h2>
-          <h2>{statistics.viewCount} views</h2>
+          {/* <h2>{statistics.viewCount} views</h2> */}
          
          
     </div>
